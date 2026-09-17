@@ -45,4 +45,4 @@ npm run archive:prepare -- /absolute/path/to/pages.json
 
 ## Publishing
 
-The workflow in `.github/workflows/deploy.yml` publishes pushes to `main` using GitHub Pages. The configured project URL is <https://hallquistlab.github.io/hallquist_lab_web/>. In repository settings, select **GitHub Actions** as the Pages source.
+The workflow in `.github/workflows/deploy.yml` publishes pushes to `main` using GitHub Pages. Because this is the `HallquistLab/hallquistlab.github.io` organization-site repository, the configured public URL is <https://hallquistlab.github.io/>. In repository settings, select **GitHub Actions** as the Pages source.
