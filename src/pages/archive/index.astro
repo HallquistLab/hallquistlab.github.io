@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import { pages } from "../../lib/legacy";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const archivePages = pages.map((page) => ({
+  ...page,
+  path: page.slug === "depend-home" ? "unc-home/" : `${page.slug}/`,
+}));
+---
+
+<BaseLayout
+  title="UNC site archive"
+  description="Complete page index for the former DEPENd Lab website at UNC–Chapel Hill."
+>
+  <PageIntro
+    eyebrow="September 2026 snapshot"
+    title="UNC site archive"
+    description="Every published page and historical event record recovered from dependlab.unc.edu."
+  />
+  <section class="archive-index shell">
+    <div class="archive-index-intro">
+      <p>
+        The archive preserves the lab's prior scientific, teaching, community, and cultural
+        record while the main site begins its Emory chapter. UNC-specific logistics are
+        clearly marked wherever they could be mistaken for current information.
+      </p>
+    </div>
+    <div class="archive-link-grid">
+      {
+        archivePages.map((page) => (
+          <a href={`${base}${page.path}`}>
+            <span>{new Date(`${page.modified}Z`).getUTCFullYear()}</span>
+            <strong>
+              {page.slug === "depend-home" ? "Former homepage" : page.title}
+            </strong>
+            <b aria-hidden="true">→</b>
+          </a>
+        ))
+      }
+      <a href={`${base}events/`}>
+        <span>2021–2022</span><strong>Events archive</strong><b aria-hidden="true">→</b>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout>
+  <section class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow">Personality · Neuroscience · Computation</p>
+      <h1>How minds<br /><em>find their way.</em></h1>
+      <p class="lede">
+        We study the neural and computational processes that shape personality,
+        self-regulation, and psychopathology across development.
+      </p>
+      <div class="button-row">
+        <a class="button button-primary" href={`${base}studies/`}>Explore our research</a>
+        <a class="button button-secondary" href={`${base}people/`}>Meet the lab</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <p class="eyebrow">Now at Emory</p>
+      <h2>Developmental Personality Neuroscience Lab</h2>
+      <p>
+        Led by Michael Hallquist in Emory University's Department of Psychology, the lab
+        brings personality science together with cognitive neuroscience, computational
+        psychiatry, and quantitative methods.
+      </p>
+      <a href="https://psychology.emory.edu/"
+        >Emory Psychology <span aria-hidden="true">↗</span></a
+      >
+    </aside>
+  </section>
+
+  <section class="statement-band">
+    <div class="shell statement-grid">
+      <p class="eyebrow">The questions that move us</p>
+      <p>
+        Why do emotions sometimes help us adapt—and sometimes pull decisions off course?
+        How do learning systems, social cues, and developing brain networks interact? And
+        how can precise models of those processes improve our understanding of mental
+        health?
+      </p>
+    </div>
+  </section>
+
+  <section class="focus shell">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Research focus</p><h2>
+          Across levels.<br />Toward mechanisms.
+        </h2>
+      </div>
+      <p>
+        Our work links behavior, brain, physiology, and daily experience through
+        experiments and formal models.
+      </p>
+    </div>
+    <div class="focus-grid">
+      <article>
+        <span>01</span><h3>Decision-making</h3><p>
+          How Pavlovian and goal-directed systems integrate reward, threat, social
+          information, and long-term goals.
+        </p>
+      </article>
+      <article>
+        <span>02</span><h3>Emotion dynamics</h3><p>
+          How mood, affective reactivity, and learning unfold over time—and why those
+          dynamics differ across people.
+        </p>
+      </article>
+      <article>
+        <span>03</span><h3>Personality & psychopathology</h3><p>
+          How neurobehavioral systems contribute to self-regulation, personality
+          pathology, and suicidal behavior.
+        </p>
+      </article>
+      <article>
+        <span>04</span><h3>Quantitative methods</h3><p>
+          Open, reproducible tools for computational modeling, intensive longitudinal
+          data, psychometrics, and neuroimaging.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-links">
+    <div class="shell home-link-grid">
+      <a href={`${base}publications/`}
+        ><span>Read the work</span><strong>Publications</strong><b>→</b></a
+      >
+      <a href={`${base}quantitative-methods/`}
+        ><span>Learn with us</span><strong>Open resources</strong><b>→</b></a
+      >
+      <a href={`${base}join/`}
+        ><span>Find your place</span><strong>Join the lab</strong><b>→</b></a
+      >
+    </div>
+  </section>
+</BaseLayout>

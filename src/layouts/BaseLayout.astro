@@ -1,0 +1,116 @@
+---
+import "../styles/global.css";
+import site from "../data/site.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+  pageType?: "website" | "article";
+}
+
+const {
+  title = site.name,
+  description = site.description,
+  pageType = "website",
+} = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const pageTitle =
+  title === site.name ? `${site.name} · Emory University` : `${title} · ${site.name}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const navItems = [
+  { label: "Research", path: "studies/", matches: ["studies/", "about/"] },
+  { label: "People", path: "people/", matches: ["people/"] },
+  { label: "Publications", path: "publications/", matches: ["publications/"] },
+  {
+    label: "Resources",
+    path: "quantitative-methods/",
+    matches: ["quantitative-methods/", "code-for-projects/", "mplusautomation/"],
+  },
+  {
+    label: "Life in the lab",
+    path: "lab-activities/",
+    matches: ["lab-activities/", "news/"],
+  },
+];
+const isCurrent = (matches: string[]) =>
+  matches.some(
+    (path) =>
+      Astro.url.pathname === `${base}${path}` ||
+      Astro.url.pathname.startsWith(`${base}${path}`),
+  );
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#012169" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <a class="wordmark" href={base} aria-label="Hallquist Lab home">
+        <span class="wordmark-mark" aria-hidden="true">HL</span>
+        <span>Hallquist Lab<small>Emory University</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        {
+          navItems.map((item) => (
+            <a
+              href={`${base}${item.path}`}
+              aria-current={isCurrent(item.matches) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="header-action" href={`${base}join/`}
+        >Join the lab <span aria-hidden="true">→</span></a
+      >
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          {
+            navItems.map((item) => (
+              <a
+                href={`${base}${item.path}`}
+                aria-current={isCurrent(item.matches) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <a href={`${base}join/`}>Join the lab →</a>
+        </nav>
+      </details>
+    </header>
+    <main id="main-content"><slot /></main>
+    <footer>
+      <div>
+        <a class="footer-brand" href={base}>Hallquist Lab</a>
+        <p>
+          Department of Psychology · Emory University<br />36 Eagle Row · Atlanta, Georgia
+          30322
+        </p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        {navItems.map((item) => <a href={`${base}${item.path}`}>{item.label}</a>)}
+        <a href={`${base}diversity-equity/`}>Community values</a>
+        <a href={`${base}archive/`}>UNC site archive</a>
+        <a href={`mailto:${site.email}`}>Email the lab</a>
+      </nav>
+    </footer>
+  </body>
+</html>

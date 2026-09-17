@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import {
+  archivedContext,
+  pageDescriptions,
+  pages,
+  renderLegacyHtml,
+} from "../lib/legacy";
+
+export function getStaticPaths() {
+  return pages.map((page) => ({
+    params: { slug: page.slug === "depend-home" ? "unc-home" : page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const html = renderLegacyHtml(page.html, base);
+const isArchive = archivedContext.has(page.slug);
+const title = page.slug === "people" ? "People" : page.title;
+---
+
+<BaseLayout title={title} description={pageDescriptions[page.slug]}>
+  <PageIntro
+    title={title}
+    description={pageDescriptions[page.slug]}
+    eyebrow={isArchive ? "UNC archive" : "Hallquist Lab"}
+  />
+
+  {
+    page.slug === "people" && (
+      <section class="current-team shell">
+        <div class="section-heading compact">
+          <div>
+            <>
+              <p class="eyebrow">Emory team</p>
+              <h2>Building the next chapter.</h2>
+            </>
+          </div>
+          <p>
+            The new Emory lab is taking shape. The full UNC team archive follows below.
+          </p>
+        </div>
+        <div class="team-grid">
+          <article>
+            <>
+              <span>Lab director</span>
+              <h3>Michael Hallquist, PhD</h3>
+              <p>Professor of Psychology</p>
+              <a href="mailto:michael.hallquist@emory.edu">michael.hallquist@emory.edu</a>
+            </>
+          </article>
+          <article>
+            <>
+              <span>Graduate student</span>
+              <h3>Abigale Collins</h3>
+              <p>
+                Social and emotional decision-making and the neural mechanisms of
+                psychopathology.
+              </p>
+              <a href="mailto:abigale.collins@emory.edu">abigale.collins@emory.edu</a>
+            </>
+          </article>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    page.slug === "people" && (
+      <aside class="archive-note shell">
+        <strong>UNC team archive</strong>
+        <p>
+          The profiles below are preserved as they appeared on the former UNC site and may
+          show former roles, affiliations, and contact details.
+        </p>
+      </aside>
+    )
+  }
+
+  {
+    isArchive && (
+      <aside class="archive-note shell">
+        <strong>Legacy information</strong>
+        <p>
+          This page is preserved from the lab's UNC–Chapel Hill website. Locations,
+          recruitment status, study compensation, eligibility, and contact details may no
+          longer be current. For present-day questions, email{" "}
+          <a href="mailto:michael.hallquist@emory.edu">michael.hallquist@emory.edu</a>.
+        </p>
+      </aside>
+    )
+  }
+
+  <article
+    class:list={[
+      "legacy-content shell",
+      `legacy-${page.slug}`,
+      { "legacy-empty": !html.trim() },
+    ]}
+  >
+    {
+      html.trim() ? (
+        <Fragment set:html={html} />
+      ) : (
+        <p>
+          This page did not contain standalone body content on the former site. Its
+          information has been incorporated into the surrounding Emory site.
+        </p>
+      )
+    }
+  </article>
+
+  <aside class="source-note shell">
+    <p>
+      Originally published on the DEPENd Lab website at UNC–Chapel Hill. Content snapshot
+      migrated September 17, 2026.
+    </p>
+    <a href={page.sourceUrl}>View the original page <span aria-hidden="true">↗</span></a>
+  </aside>
+</BaseLayout>
