@@ -5,7 +5,9 @@ import http from "node:http";
 
 const source = process.argv[2];
 if (!source)
-  throw new Error("Usage: node scripts/prepare-archive.mjs /path/to/pages.json");
+  throw new Error(
+    "Usage: node scripts/prepare-archive.mjs /path/to/pages.json",
+  );
 
 const root = path.resolve(import.meta.dirname, "..");
 const publicMedia = path.join(root, "public", "media");
@@ -36,7 +38,9 @@ for (const page of raw) {
 
 function relativeMediaPath(url) {
   const parsed = new URL(url);
-  return decodeURIComponent(parsed.pathname.split("/wp-content/uploads/sites/266/")[1]);
+  return decodeURIComponent(
+    parsed.pathname.split("/wp-content/uploads/sites/266/")[1],
+  );
 }
 
 function cleanHtml(input) {
@@ -125,7 +129,9 @@ function download(url, destination, redirects = 0) {
       },
     );
     request.on("error", reject);
-    request.setTimeout(60000, () => request.destroy(new Error(`Timeout ${url}`)));
+    request.setTimeout(60000, () =>
+      request.destroy(new Error(`Timeout ${url}`)),
+    );
   });
 }
 

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Michael Hallquist, PhD",
+    "initials": "MH",
+    "role": "Lab director",
+    "position": "Professor of Psychology",
+    "bio": "Michael integrates personality science, cognitive neuroscience, and computational psychiatry to understand how learning, decision-making, and emotion shape personality and psychopathology. He develops and applies latent variable and reinforcement learning models to link neurocomputational processes with individual differences.",
+    "email": "michael.hallquist@emory.edu"
+  },
+  {
+    "name": "Abigale Collins",
+    "initials": "AC",
+    "role": "Graduate student",
+    "position": "Department of Psychology",
+    "bio": "Abigale studies social and emotional decision-making and the neural mechanisms of psychopathology.",
+    "email": "abigale.collins@emory.edu"
+  }
+]

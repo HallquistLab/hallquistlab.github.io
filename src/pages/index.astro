@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const base = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
+import PublicationCard from "../components/PublicationCard.astro";
+import ProjectCards from "../components/ProjectCards.astro";
+import { getPublication } from "../lib/publications";
+import { researchThemes } from "../data/research";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout>
@@ -11,91 +13,125 @@ const base = import.meta.env.BASE_URL.endsWith("/")
       <p class="eyebrow">Personality · Neuroscience · Computation</p>
       <h1>How minds<br /><em>find their way.</em></h1>
       <p class="lede">
-        We study the neural and computational processes that shape personality,
-        self-regulation, and psychopathology across development.
+        We study how learning, decision-making, and emotion shape personality
+        and mental health—and why these processes differ across people.
       </p>
       <div class="button-row">
-        <a class="button button-primary" href={`${base}studies/`}>Explore our research</a>
-        <a class="button button-secondary" href={`${base}people/`}>Meet the lab</a>
+        <a class="button button-primary" href={`${base}research/`}
+          >Explore our research</a
+        >
+        <a class="button button-secondary" href={`${base}people/`}
+          >Meet the lab</a
+        >
       </div>
-    </div>
-    <aside class="hero-card">
-      <p class="eyebrow">Now at Emory</p>
-      <h2>Developmental Personality Neuroscience Lab</h2>
-      <p>
-        Led by Michael Hallquist in Emory University's Department of Psychology, the lab
-        brings personality science together with cognitive neuroscience, computational
-        psychiatry, and quantitative methods.
-      </p>
-      <a href="https://psychology.emory.edu/"
-        >Emory Psychology <span aria-hidden="true">↗</span></a
-      >
-    </aside>
-  </section>
-
-  <section class="statement-band">
-    <div class="shell statement-grid">
-      <p class="eyebrow">The questions that move us</p>
-      <p>
-        Why do emotions sometimes help us adapt—and sometimes pull decisions off course?
-        How do learning systems, social cues, and developing brain networks interact? And
-        how can precise models of those processes improve our understanding of mental
-        health?
+      <p class="hero-affiliation">
+        Department of Psychology <span aria-hidden="true">/</span> Emory University
       </p>
     </div>
+    <PublicationCard paper={getPublication("cv-104")} variant="feature" />
   </section>
-
-  <section class="focus shell">
-    <div class="section-heading">
+  <section
+    class="research-overview shell section-space"
+    aria-labelledby="research-heading"
+  >
+    <div class="section-heading compact">
       <div>
-        <p class="eyebrow">Research focus</p><h2>
-          Across levels.<br />Toward mechanisms.
+        <p class="eyebrow">The questions that move us</p><h2
+          id="research-heading"
+        >
+          Connecting processes<br />to people.
         </h2>
       </div>
       <p>
-        Our work links behavior, brain, physiology, and daily experience through
-        experiments and formal models.
+        We bring personality science, cognitive neuroscience, and computational
+        psychiatry together to understand variation in how people think, feel,
+        and act.
       </p>
     </div>
-    <div class="focus-grid">
-      <article>
-        <span>01</span><h3>Decision-making</h3><p>
-          How Pavlovian and goal-directed systems integrate reward, threat, social
-          information, and long-term goals.
-        </p>
-      </article>
-      <article>
-        <span>02</span><h3>Emotion dynamics</h3><p>
-          How mood, affective reactivity, and learning unfold over time—and why those
-          dynamics differ across people.
-        </p>
-      </article>
-      <article>
-        <span>03</span><h3>Personality & psychopathology</h3><p>
-          How neurobehavioral systems contribute to self-regulation, personality
-          pathology, and suicidal behavior.
-        </p>
-      </article>
-      <article>
-        <span>04</span><h3>Quantitative methods</h3><p>
-          Open, reproducible tools for computational modeling, intensive longitudinal
-          data, psychometrics, and neuroimaging.
-        </p>
-      </article>
+    <div class="question-grid">
+      {
+        researchThemes.map((theme) => (
+          <a class="question-link" href={`${base}research/#${theme.id}`}>
+            <span class="eyebrow">
+              <span class="index-number">{theme.number}</span> {theme.label}
+            </span>
+            <>
+              <h3>{theme.question}</h3>
+              <p>{theme.description}</p>
+              <span class="text-link">
+                Explore this question <span aria-hidden="true">→</span>
+              </span>
+            </>
+          </a>
+        ))
+      }
     </div>
   </section>
-
-  <section class="home-links">
-    <div class="shell home-link-grid">
-      <a href={`${base}publications/`}
-        ><span>Read the work</span><strong>Publications</strong><b>→</b></a
-      >
-      <a href={`${base}quantitative-methods/`}
-        ><span>Learn with us</span><strong>Open resources</strong><b>→</b></a
-      >
-      <a href={`${base}join/`}
-        ><span>Find your place</span><strong>Join the lab</strong><b>→</b></a
-      >
+  <section class="selected-work section-space" aria-labelledby="work-heading">
+    <div class="shell">
+      <div class="section-heading compact">
+        <div>
+          <p class="eyebrow">Selected recent work</p><h2 id="work-heading">
+            Ideas in focus.
+          </h2>
+        </div><a class="text-link section-link" href={`${base}publications/`}
+          >Browse all publications <span aria-hidden="true">→</span></a
+        >
+      </div>
+      <div class="publication-grid">
+        {
+          ["hallquist-tackett-2026", "cv-102", "cv-101"].map((id) => (
+            <PublicationCard paper={getPublication(id)} />
+          ))
+        }
+      </div>
     </div>
+  </section>
+  <section class="shell section-space" aria-labelledby="projects-heading">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">A connected research program</p>
+        <h2 id="projects-heading">Research underway<br />& ahead.</h2>
+      </div>
+      <p>
+        From the interplay of learning and mood to the emergence of suicidal
+        thoughts, Momentum and LENS connect experiments with everyday life.
+      </p>
+    </div>
+    <ProjectCards />
+  </section>
+  <section class="community-band">
+    <div class="shell community-grid">
+      <div>
+        <p class="eyebrow">Hallquist Lab at Emory</p><h2>
+          A shared curiosity<br />about people.
+        </h2>
+      </div>
+      <div>
+        <p>
+          Led by Michael Hallquist, our lab connects experimental research with
+          formal models and the complexity of everyday life. Collaboration and
+          quantitative training are part of how we work.
+        </p><div class="button-row">
+          <a class="button button-primary" href={`${base}people/`}
+            >Meet our people</a
+          ><a class="text-link" href={`${base}join/`}
+            >Training & opportunities <span aria-hidden="true">→</span></a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="resource-strip shell">
+    <div>
+      <p class="eyebrow">Open science & training</p><h2>
+        Methods worth sharing.
+      </h2><p>
+        Software, workshops, and teaching materials for modeling behavior,
+        brains, and individual differences.
+      </p>
+    </div><a class="text-link" href={`${base}resources/`}
+      >Explore our resources <span aria-hidden="true">→</span></a
+    >
   </section>
 </BaseLayout>

@@ -1,10 +1,11 @@
 {
   "name": "Hallquist Lab",
   "longName": "Developmental Personality Neuroscience Lab",
-  "tagline": "Personality · Neuroscience · Computation",
+  "tagline": "Personality \u00b7 Neuroscience \u00b7 Computation",
   "description": "The Hallquist Lab at Emory University studies the neural and computational processes that shape personality, self-regulation, and psychopathology.",
   "email": "michael.hallquist@emory.edu",
   "departmentUrl": "https://psychology.emory.edu/",
   "githubUrl": "https://github.com/UNCDEPENdLab",
-  "legacyUrl": "https://dependlab.unc.edu/"
+  "legacyUrl": "https://dependlab.unc.edu/",
+  "scholarUrl": "https://scholar.google.com/citations?user=mDOXA1wAAAAJ&sortby=pubdate"
 }

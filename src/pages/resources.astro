@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+const resources = [
+  {
+    category: "Software",
+    title: "MplusAutomation",
+    description:
+      "An R package for creating, estimating, and comparing latent variable models in Mplus, and collecting results across many analyses.",
+    url: "https://michaelhallquist.github.io/MplusAutomation/",
+    label: "Documentation & examples",
+  },
+  {
+    category: "Code",
+    title: "Research repositories",
+    description:
+      "Code and analysis materials from projects developed by the lab and its collaborators.",
+    url: "https://github.com/UNCDEPENdLab",
+    label: "Browse the repositories",
+  },
+  {
+    category: "Workshop",
+    title: "Multilevel modeling",
+    description:
+      "An introduction to multilevel models and their application to behavioral data, including cognitive and decision-making tasks.",
+    url: "https://uncdependlab.github.io/MLM_Tutorial/",
+    label: "Explore the workshop",
+  },
+  {
+    category: "Graduate course",
+    title: "Structural equation modeling",
+    description:
+      "Course materials on measurement and structural models, including lectures and applications in the social sciences.",
+    url: "https://psu-psychology.github.io/psy-597-sem-sp2019/",
+    label: "Visit the course",
+  },
+  {
+    category: "Training",
+    title: "R bootcamp",
+    description:
+      "An introduction to R, data wrangling, visualization, statistical modeling, and reproducible analysis.",
+    url: "https://psu-psychology.github.io/r-bootcamp-2019/modules.html",
+    label: "Browse the modules",
+  },
+];
+---
+
+<BaseLayout
+  title="Resources"
+  description="Open software, quantitative methods workshops, and teaching materials from the Hallquist Lab."
+>
+  <PageIntro
+    title="Resources"
+    eyebrow="Open methods & training"
+    description="Tools and teaching materials for studying behavior, brains, and individual differences."
+  />
+  <section class="shell section-space">
+    <div class="resource-grid">
+      {
+        resources.map((resource) => (
+          <article class="resource-card">
+            <>
+              <p class="eyebrow">{resource.category}</p>
+              <h2>{resource.title}</h2>
+              <p>{resource.description}</p>
+              <a class="text-link" href={resource.url}>
+                {resource.label} <span aria-hidden="true">↗</span>
+              </a>
+            </>
+          </article>
+        ))
+      }
+    </div><p class="catalog-note">
+      Course and workshop materials retain the dates and institutional context
+      in which they were developed.
+    </p>
+  </section>
+</BaseLayout>

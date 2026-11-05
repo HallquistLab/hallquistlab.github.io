@@ -4,10 +4,12 @@ import PageIntro from "../../components/PageIntro.astro";
 import events from "../../data/legacy-events.json";
 
 const formatter = new Intl.DateTimeFormat("en-US", { dateStyle: "long" });
-const formatDate = (value: string) => formatter.format(new Date(value.replace(" ", "T")));
+const formatDate = (value: string) =>
+  formatter.format(new Date(value.replace(" ", "T")));
 ---
 
 <BaseLayout
+  noIndex
   title="Events archive"
   description="Historical events preserved from the former DEPENd Lab website at UNC–Chapel Hill."
 >
@@ -19,8 +21,9 @@ const formatDate = (value: string) => formatter.format(new Date(value.replace(" 
   <aside class="archive-note shell">
     <strong>Legacy information</strong>
     <p>
-      These events ended in 2021–2022 and are retained only as part of the complete site
-      archive. Their application links and UNC contact details are not current.
+      These events ended in 2021–2022 and are retained only as part of the
+      complete site archive. Their application links and UNC contact details are
+      not current.
     </p>
   </aside>
   <section class="event-archive shell">

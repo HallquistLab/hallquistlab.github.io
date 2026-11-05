@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import site from "../data/site.json";
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Michael Hallquist and the Hallquist Lab in Emory University's Department of Psychology."
+>
+  <PageIntro
+    title="Get in touch."
+    eyebrow="Contact the lab"
+    description="Questions about research, collaboration, or training? Start here."
+  />
+  <section class="shell section-space contact-grid">
+    <div>
+      <p class="eyebrow">Email</p><h2>Michael Hallquist</h2><p>
+        Professor of Psychology<br />Hallquist Lab · Emory University
+      </p><a class="text-link contact-email" href={`mailto:${site.email}`}
+        >{site.email}</a
+      >
+    </div><div>
+      <p class="eyebrow">Find us</p><h2>Emory University</h2><address>
+        Department of Psychology<br />36 Eagle Row, Room 471<br />Atlanta, GA
+        30322
+      </address><p>Please arrange a visit by email.</p><a
+        class="text-link"
+        href={site.departmentUrl}
+        >Department of Psychology <span aria-hidden="true">↗</span></a
+      >
+    </div>
+  </section>
+  <section class="community-band">
+    <div class="shell resource-strip">
+      <div>
+        <p class="eyebrow">Interested in research training?</p><h2>
+          Explore working with us.
+        </h2>
+      </div><a class="text-link" href={`${base}join/`}
+        >Training & opportunities <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </section>
+</BaseLayout>

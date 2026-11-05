@@ -1,0 +1,9 @@
+---
+import ArchivePage from "../../components/ArchivePage.astro";
+import { pages } from "../../lib/legacy";
+export function getStaticPaths() {
+  return pages.map((page) => ({ params: { slug: page.slug === "depend-home" ? "unc-home" : page.slug }, props: { page } }));
+}
+const { page } = Astro.props;
+---
+<ArchivePage page={page} />

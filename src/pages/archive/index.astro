@@ -8,7 +8,7 @@ const base = import.meta.env.BASE_URL.endsWith("/")
   : `${import.meta.env.BASE_URL}/`;
 const archivePages = pages.map((page) => ({
   ...page,
-  path: page.slug === "depend-home" ? "unc-home/" : `${page.slug}/`,
+  path: `archive/${page.slug === "depend-home" ? "unc-home" : page.slug}/`,
 }));
 ---
 

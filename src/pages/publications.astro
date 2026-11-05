@@ -1,0 +1,245 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import { publications, featuredPublications } from "../lib/publications";
+import site from "../data/site.json";
+import { publicationSearchText } from "../lib/publication-filter";
+const years = [...new Set(publications.map((paper) => paper.year))];
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Publications"
+  description="Research articles by Michael Hallquist and collaborators, with selected work on personality development, computational psychiatry, emotion, and decision-making."
+>
+  <PageIntro
+    title="Publications"
+    eyebrow="Our work"
+    description="Connecting personality science with the processes that shape learning, emotion, and behavior."
+  />
+  <section class="shell section-space" aria-labelledby="spotlights">
+    <p class="eyebrow">Research spotlights</p><h2
+      class="section-title"
+      id="spotlights"
+    >
+      Two perspectives on mental health.
+    </h2><div class="publication-grid two-columns">
+      {featuredPublications.map((paper) => <PublicationCard paper={paper} />)}
+    </div>
+  </section>
+  <section
+    class="shell bibliography section-space"
+    aria-labelledby="all-publications"
+  >
+    <div class="section-heading compact">
+      <div>
+        <p class="eyebrow">Articles & reviews</p><h2 id="all-publications">
+          Browse the work.
+        </h2>
+      </div><p>
+        Publications by Michael Hallquist and collaborators, from 2007 onward. <a
+          href={site.scholarUrl}
+          >View Google Scholar <span aria-hidden="true">↗</span></a
+        >
+      </p>
+    </div>
+    <form
+      class="publication-filters"
+      id="publication-filters"
+      role="search"
+      aria-label="Search publications"
+      hidden
+    >
+      <div>
+        <label for="publication-query"
+          >Search by title, author, or journal</label
+        ><input
+          id="publication-query"
+          name="q"
+          type="search"
+          placeholder="Try impulsivity, learning, or HiTOP"
+          autocomplete="off"
+          aria-controls="publication-results"
+        />
+      </div>
+      <div>
+        <label for="publication-year">Year</label><select
+          id="publication-year"
+          name="year"
+          aria-controls="publication-results"
+          ><option value="">All years</option>{
+            years.map((year) => <option value={year}>{year}</option>)
+          }</select
+        >
+      </div>
+      <button class="button button-secondary" type="reset">Clear filters</button
+      >
+    </form>
+    <p
+      class="result-count"
+      id="publication-count"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {publications.length} publications
+    </p>
+    <nav class="year-navigation" aria-label="Jump to publication year">
+      {
+        years.map((year) => (
+          <a href={`#year-${year}`} data-year-link={year}>
+            {year}
+          </a>
+        ))
+      }
+    </nav>
+    <div id="publication-results">
+      {
+        years.map((year) => (
+          <section
+            class="publication-year"
+            id={`year-${year}`}
+            data-publication-year={year}
+            aria-labelledby={`heading-${year}`}
+          >
+            <>
+              <h2 id={`heading-${year}`}>{year}</h2>
+              <div>
+                {publications
+                  .filter((paper) => paper.year === year)
+                  .map((paper) => (
+                    <article
+                      class="publication-row"
+                      id={paper.id}
+                      data-publication
+                      data-year={year}
+                      data-search={publicationSearchText(paper)}
+                    >
+                      <h3>{paper.title}</h3>
+                      {paper.authors.length > 250 ? (
+                        <>
+                          <p class="publication-authors">
+                            {paper.authorLabel ??
+                              `${paper.authors.split(",")[0]} et al.`}
+                          </p>
+                          <details class="author-disclosure">
+                            <summary>Full author list</summary>
+                            <p>{paper.authors}</p>
+                          </details>
+                        </>
+                      ) : (
+                        <p class="publication-authors">{paper.authors}</p>
+                      )}
+                      <p class="publication-citation">
+                        <cite>{paper.venue}</cite>
+                        {paper.details && `, ${paper.details}`}
+                        {paper.status === "in-press" && (
+                          <span class="status-label">In press</span>
+                        )}
+                      </p>
+                      {paper.links.length > 0 && (
+                        <ul
+                          class="publication-actions"
+                          aria-label={`Access: ${paper.title}`}
+                        >
+                          {paper.links.map((link) => (
+                            <li>
+                              <a
+                                href={
+                                  link.url.startsWith("/")
+                                    ? `${base}${link.url.slice(1)}`
+                                    : link.url
+                                }
+                              >
+                                {link.label}
+                                <span aria-hidden="true"> ↗</span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </article>
+                  ))}
+              </div>
+            </>
+          </section>
+        ))
+      }
+    </div>
+    <p id="publication-empty" class="empty-results" hidden>
+      No publications match these filters. Try a broader search or clear the
+      year selection.
+    </p>
+    <p class="catalog-note">
+      Looking for earlier lab-member publications or the original bibliography? <a
+        href={`${base}archive/publications/`}
+        >Browse the UNC publication archive.</a
+      >
+    </p>
+  </section>
+</BaseLayout>
+<script>
+  import { filterPublications } from "../lib/publication-filter";
+  const form = document.querySelector<HTMLFormElement>("#publication-filters")!;
+  const query = document.querySelector<HTMLInputElement>("#publication-query")!;
+  const year = document.querySelector<HTMLSelectElement>("#publication-year")!;
+  const count = document.querySelector<HTMLElement>("#publication-count")!;
+  const empty = document.querySelector<HTMLElement>("#publication-empty")!;
+  const rows = [
+    ...document.querySelectorAll<HTMLElement>("[data-publication]"),
+  ];
+  const groups = [
+    ...document.querySelectorAll<HTMLElement>("[data-publication-year]"),
+  ];
+  const params = new URLSearchParams(window.location.search);
+  query.value = params.get("q") ?? "";
+  year.value = [...year.options].some(
+    (option) => option.value === params.get("year"),
+  )
+    ? params.get("year")!
+    : "";
+  function update() {
+    const matches = filterPublications(
+      rows.map((row) => ({
+        search: row.dataset.search!,
+        year: row.dataset.year!,
+      })),
+      query.value,
+      year.value,
+    );
+    rows.forEach((row, index) => {
+      row.hidden = !matches[index];
+    });
+    groups.forEach((group) => {
+      const visible = [
+        ...group.querySelectorAll<HTMLElement>("[data-publication]"),
+      ].some((row) => !row.hidden);
+      group.hidden = !visible;
+      document.querySelector<HTMLElement>(
+        `[data-year-link="${group.dataset.publicationYear}"]`,
+      )!.hidden = !visible;
+    });
+    const total = matches.filter(Boolean).length;
+    count.textContent = `${total} ${total === 1 ? "publication" : "publications"}${query.value.trim() || year.value ? " found" : ""}`;
+    empty.hidden = total > 0;
+    const url = new URL(window.location.href);
+    query.value.trim()
+      ? url.searchParams.set("q", query.value.trim())
+      : url.searchParams.delete("q");
+    year.value
+      ? url.searchParams.set("year", year.value)
+      : url.searchParams.delete("year");
+    window.history.replaceState(null, "", url);
+  }
+  form.hidden = false;
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    update();
+  });
+  query.addEventListener("input", update);
+  year.addEventListener("change", update);
+  // Wait for the browser to restore the form controls before filtering again.
+  form.addEventListener("reset", () => setTimeout(update, 0));
+  update();
+</script>

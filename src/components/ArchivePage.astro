@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "./PageIntro.astro";
+import { renderLegacyHtml, type LegacyPage } from "../lib/legacy";
+interface Props {
+  page: LegacyPage;
+}
+const { page } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const html = renderLegacyHtml(page.html, base, true);
+---
+
+<BaseLayout
+  title={`${page.title} · UNC archive`}
+  description={`Historical ${page.title.toLowerCase()} content preserved from the lab's UNC–Chapel Hill website.`}
+  noIndex
+>
+  <PageIntro
+    title={page.title}
+    eyebrow="UNC archive · September 2026 snapshot"
+  />
+  <aside class="archive-note shell">
+    <strong>Historical information</strong><p>
+      This page preserves the former UNC–Chapel Hill site. Roles, affiliations,
+      locations, recruitment status, and contact details may have changed. <a
+        href={`${base}contact/`}>Contact the current Emory lab</a
+      > or <a href={`${base}archive/`}>browse the archive</a>.
+    </p>
+  </aside>
+  <article class:list={["legacy-content shell", `legacy-${page.slug}`]}>
+    {
+      html.trim() ? (
+        <Fragment set:html={html} />
+      ) : (
+        <p>
+          This page had no standalone body content in the original snapshot.
+        </p>
+      )
+    }
+  </article>
+  <aside class="source-note shell">
+    <p>
+      Originally published on the DEPENd Lab website at UNC–Chapel Hill.
+      Snapshot: September 17, 2026.
+    </p><a href={page.sourceUrl}
+      >Original page <span aria-hidden="true">↗</span></a
+    >
+  </aside>
+</BaseLayout>
