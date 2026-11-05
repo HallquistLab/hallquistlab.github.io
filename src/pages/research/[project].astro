@@ -31,12 +31,10 @@ const themes = researchThemes.filter((theme) =>
       aria-labelledby="overview-heading"
     >
       <div>
-        <p class="eyebrow">The project</p>
-        <h2 id="overview-heading">{project.title}</h2>
+        <h2 id="overview-heading">Overview</h2>
       </div>
       <div class="prose-copy">
-        <p class="large-prose">{project.summary}</p>
-        <p>{project.introduction}</p>
+        <p class="large-prose">{project.introduction}</p>
         <nav class="section-navigation" aria-label="Project sections">
           <a href="#questions">Research questions ↓</a>
           <a href="#methods">Methods ↓</a>
@@ -50,9 +48,7 @@ const themes = researchThemes.filter((theme) =>
       aria-labelledby="questions-heading"
     >
       <div>
-        <p class="eyebrow">What we ask</p><h2 id="questions-heading">
-          Research questions
-        </h2>
+        <h2 id="questions-heading">Research questions</h2>
       </div>
       <div class="research-detail-copy">
         <ul class="project-questions">
@@ -66,11 +62,7 @@ const themes = researchThemes.filter((theme) =>
       aria-labelledby="methods-heading"
     >
       <div>
-        <p class="eyebrow">Experiments in everyday life</p><h2
-          id="methods-heading"
-        >
-          Following change over time.
-        </h2>
+        <h2 id="methods-heading">Methods</h2>
       </div>
       <div class="research-detail-copy">
         <p class="large-prose">{project.methods}</p>
@@ -85,7 +77,7 @@ const themes = researchThemes.filter((theme) =>
     <div class="shell community-grid">
       <div>
         <p class="eyebrow">Momentum & LENS</p><h2 id="connection-heading">
-          A connected research program.
+          How the studies relate
         </h2>
       </div>
       <div>
@@ -104,15 +96,9 @@ const themes = researchThemes.filter((theme) =>
       aria-labelledby="related-heading"
     >
       <div>
-        <p class="eyebrow">Scientific context</p><h2 id="related-heading">
-          Related work
-        </h2>
+        <h2 id="related-heading">Related publications</h2>
       </div>
       <div class="research-detail-copy">
-        <p>
-          These publications provide context for the project's questions and
-          approach.
-        </p>
         <ul class="related-papers">
           {
             project.papers.map((id) => {
@@ -131,7 +117,7 @@ const themes = researchThemes.filter((theme) =>
             })
           }
         </ul>
-        <h3 class="small-heading">Connected research themes</h3>
+        <h3 class="small-heading">Research themes</h3>
         <nav class="section-navigation" aria-label="Connected research themes">
           {
             themes.map((theme) => (

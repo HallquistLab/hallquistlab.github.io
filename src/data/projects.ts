@@ -5,7 +5,7 @@ export const researchProjects = [
     stage: "Research foundation",
     title: "How learning and mood shape each other",
     summary:
-      "Our experiences influence how we feel—and how we feel may change what we learn. Momentum follows these reciprocal processes in everyday life.",
+      "Momentum examines how learning and mood influence each other through repeated experiments and assessments of everyday experience.",
     introduction:
       "Momentum investigates how sensitivity to rewards and negative outcomes changes over time, how those changes relate to later mood, and why these relationships differ across people. By studying the same people across several weeks, we connect learning experiments with the experiences and emotions of daily life.",
     questions: [
@@ -14,7 +14,7 @@ export const researchProjects = [
       "Why do learning and mood influence each other more strongly in some people than in others?",
     ],
     methods:
-      "Repeated learning experiments measure how people update their expectations and value different outcomes. Smartphone assessments capture everyday mood and experiences, while wearable recordings of brain and heart activity help us examine the physiological processes involved.",
+      "Repeated learning experiments measure how people update their expectations and value outcomes. Smartphone assessments capture mood and everyday experiences, while wearable sensors record brain and heart activity during learning.",
     approach:
       "Computational reinforcement learning models describe how people learn from experience. Intensive longitudinal models then connect changes in learning with changes in mood within the same person, while examining how these relationships vary across people.",
     connection:
@@ -32,7 +32,7 @@ export const researchProjects = [
     summary:
       "Building on Momentum, LENS will ask whether changes in learning from negative outcomes help explain when emotional distress and suicidal thoughts emerge.",
     introduction:
-      "When do everyday setbacks become especially difficult to navigate? LENS will investigate whether heightened sensitivity to negative outcomes precedes increases in emotional distress and suicidal thoughts. The study focuses on how vulnerability changes within a person over time, alongside differences in personality and history of suicidal behavior.",
+      "LENS will investigate whether heightened sensitivity to negative outcomes precedes increases in emotional distress and suicidal thoughts. The study focuses on how vulnerability changes within a person over time, alongside differences in personality and history of suicidal behavior.",
     questions: [
       "Do states of heightened punishment learning precede increases in suicidal thoughts, and what role does negative mood play?",
       "Can brain and heart responses during learning help characterize these changing states?",

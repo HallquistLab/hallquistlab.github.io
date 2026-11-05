@@ -12,23 +12,22 @@ const base = import.meta.env.BASE_URL;
   <PageIntro
     title="Join the lab"
     eyebrow="Training & opportunities"
-    description="Research at the intersection of personality, neuroscience, and computational methods."
+    description="Undergraduate research, graduate training, and collaboration."
   />
   <section class="shell section-space prose-layout">
     <div>
-      <p class="eyebrow">Start a conversation</p><h2>
-        Bring curiosity.<br />Build new skills.
-      </h2>
+      <h2>Working with the lab</h2>
     </div><div class="prose-copy">
       <p class="large-prose">
-        We bring together perspectives from psychology, neuroscience,
-        statistics, and computation to understand personality and mental health.
+        Contact Michael Hallquist about research fit and current opportunities.
+        Availability varies by role and academic year.
       </p><p>
-        If you are interested in training with the lab, explore our <a
-          href={`${base}research/`}>research</a
-        > and <a href={`${base}publications/`}>recent work</a>, then contact
-        Michael Hallquist about current opportunities and fit. Availability
-        varies by role and academic year.
+        Before writing, review our <a href={`${base}research/`}>research</a> and{
+          " "
+        }
+        <a href={`${base}publications/`}>recent work</a>. Include your
+        interests, relevant experience, and the type of role and time frame you
+        have in mind.
       </p><a
         class="button button-primary"
         href={`mailto:${site.email}?subject=Hallquist%20Lab%20research%20opportunities`}
@@ -41,14 +40,13 @@ const base = import.meta.env.BASE_URL;
     aria-label="Research training pathways"
   >
     <article>
-      <p class="eyebrow">Undergraduate research</p><h2>Learn by doing.</h2><p>
+      <h2>Undergraduate research</h2><p>
         Tell us about your interests, relevant coursework or experience, and the
         skills you would like to develop. Contact us to discuss available roles,
         expectations, and possible ways to participate.
       </p>
     </article><article>
-      <p class="eyebrow">Graduate training</p><h2>Develop your questions.</h2><p
-      >
+      <h2>Graduate training</h2><p>
         Prospective graduate students should review Emory Psychology’s programs
         and admissions information and contact Michael about research fit and
         advising availability for the relevant admissions cycle.
@@ -56,7 +54,7 @@ const base = import.meta.env.BASE_URL;
         >Emory Psychology <span aria-hidden="true">↗</span></a
       >
     </article><article>
-      <p class="eyebrow">Collaboration</p><h2>Connect across fields.</h2><p>
+      <h2>Collaboration</h2><p>
         For questions about research collaborations or other training
         opportunities, send a brief description of your interests and how they
         connect with the lab’s work.
@@ -66,14 +64,12 @@ const base = import.meta.env.BASE_URL;
     </article>
   </section>
   <section class="shell faq-section">
-    <p class="eyebrow">A few starting points</p><h2 class="section-title">
-      Questions about working together.
-    </h2><details>
+    <h2 class="section-title">Training questions</h2><details>
       <summary>What backgrounds connect with the lab’s research?</summary><p>
         Our work draws on personality and clinical psychology, cognitive
-        neuroscience, statistics, and computational modeling. Different projects
-        bring these areas together in different ways. Tell us where your
-        interests and experience connect, and what you want to learn.
+        neuroscience, statistics, and computational modeling. Tell us how your
+        interests and experience relate to the research, and what you want to
+        learn.
       </p>
     </details><details>
       <summary>Where can I learn about the methods you use?</summary><p>
@@ -81,12 +77,6 @@ const base = import.meta.env.BASE_URL;
           >software and training resources</a
         >. They cover multilevel modeling, structural equation modeling, R, and
         reproducible research.
-      </p>
-    </details><details>
-      <summary>How do I check whether an opportunity is available?</summary><p>
-        Email <a href={`mailto:${site.email}`}>{site.email}</a> with the type of
-        role and time frame you have in mind. Graduate applicants should also consult
-        the department’s current admissions information.
       </p>
     </details>
   </section>

@@ -188,9 +188,9 @@ p {
   max-width: 850px;
   margin-bottom: 30px;
   font-family: var(--serif);
-  font-size: clamp(60px, 6.7vw, 96px);
-  line-height: 0.94;
-  letter-spacing: -0.045em;
+  font-size: clamp(54px, 5.6vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.035em;
   font-weight: 500;
 }
 .hero h1 em {
@@ -1000,6 +1000,11 @@ select:focus-visible {
 .research-intro .large-prose {
   max-width: 65ch;
 }
+.research-methods-intro {
+  max-width: 75ch;
+  color: var(--muted);
+  margin-top: 24px;
+}
 .section-navigation {
   display: flex;
   flex-wrap: wrap;
@@ -1455,7 +1460,7 @@ footer p {
     max-width: 680px;
   }
   .hero h1 {
-    font-size: clamp(64px, 10vw, 88px);
+    font-size: clamp(54px, 9vw, 80px);
   }
   .publication-grid {
     grid-template-columns: 1fr;
@@ -1539,7 +1544,7 @@ footer p {
     padding-block: 50px;
   }
   .hero h1 {
-    font-size: clamp(48px, 12vw, 78px);
+    font-size: clamp(40px, 10.5vw, 72px);
   }
   .hero-affiliation {
     max-width: 32ch;

@@ -9,18 +9,29 @@ const base = import.meta.env.BASE_URL;
 
 <BaseLayout
   title="Research"
-  description="How learning, decision-making, and emotion shape individual differences in personality and mental health."
+  description="Transdiagnostic dimensions of personality and psychopathology studied through computational modeling, cognitive neuroscience, and intensive longitudinal assessment."
 >
   <PageIntro
     title="Research"
-    eyebrow="Questions across levels"
-    description="We connect patterns of personality and psychopathology with the processes that help explain them."
+    eyebrow="Personality & psychopathology"
+    description="Explaining individual differences through neurocomputational processes."
   />
   <div class="shell research-intro section-space">
     <p class="large-prose">
-      How do people learn from experience, navigate strong emotions, and build a
-      sense of themselves? We combine experiments and formal models with brain
-      imaging, physiology, and assessments of everyday life.
+      Our lab seeks to understand why people differ in the ways they learn from
+      experience, make decisions, experience emotions, and navigate social
+      relationships—and how these differences affect mental health. We study
+      transdiagnostic dimensions of personality and psychopathology that cut
+      across traditional diagnostic categories. Our goal is to explain
+      individual differences in these dimensions in terms of the
+      neurocomputational processes that give rise to them.
+    </p>
+    <p class="research-methods-intro">
+      We integrate computational models of learning and decision-making with
+      functional neuroimaging, intensive longitudinal assessment,
+      psychophysiology, and advanced statistical modeling. Current projects
+      investigate personality pathology, mood dynamics, social affiliation,
+      cooperation, and Pavlovian-instrumental interactions.
     </p><nav class="section-navigation" aria-label="Research themes">
       <a href="#projects">Momentum & LENS <span aria-hidden="true">↓</span></a>
       {
@@ -39,14 +50,16 @@ const base = import.meta.env.BASE_URL;
   >
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Momentum & LENS</p><h2 id="projects-heading">
-          From learning and mood to suicidal thoughts.
+        <p class="eyebrow">Current & upcoming projects</p><h2
+          id="projects-heading"
+        >
+          Momentum & LENS
         </h2>
       </div>
       <p>
         Momentum investigates how learning and mood influence each other. LENS
-        will build on this foundation to ask when changing learning states
-        create vulnerability to emotional distress and suicidal thoughts.
+        will test whether changes in learning precede emotional distress and
+        suicidal thoughts.
       </p>
     </div>
     <ProjectCards />
@@ -106,14 +119,12 @@ const base = import.meta.env.BASE_URL;
   <section class="community-band">
     <div class="shell community-grid">
       <div>
-        <p class="eyebrow">Methods connect the questions</p><h2>
-          From measurement<br />to mechanism.
-        </h2>
+        <h2>Statistical & computational methods</h2>
       </div><div>
         <p>
-          Computational reinforcement learning, latent variable models,
-          intensive longitudinal methods, and neuroimaging let us link processes
-          within a person to differences across people.
+          We develop and apply methods for psychometric, behavioral, and
+          neuroimaging data, including latent variable and reinforcement
+          learning models.
         </p><a class="text-link" href={`${base}resources/`}
           >Software & training materials <span aria-hidden="true">→</span></a
         >

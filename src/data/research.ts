@@ -5,12 +5,12 @@ export const researchThemes = [
     label: "Learning & decision-making",
     question: "When do we explore, and when do we persist?",
     description:
-      "How do we learn what is worth pursuing—and when to change course? We use experiments, brain imaging, and computational models to understand how reward, threat, and social information guide decisions.",
+      "We use computational models and functional neuroimaging to study how people learn from rewards, punishments, and social information.",
     detail:
-      "Our work examines exploration and exploitation, cooperation, and the interaction between Pavlovian influences and goal-directed learning. We ask how these processes differ across people and how those differences relate to mental health.",
+      "Our work examines exploration and exploitation, social affiliation, cooperation, and Pavlovian-instrumental interactions. We ask how these processes differ across people and how those differences relate to personality and psychopathology.",
     papers: ["cv-091", "cv-092", "cv-101"],
     projectContext:
-      "Momentum and LENS connect these questions to everyday life by examining how sensitivity to rewards and punishments changes over time, and how those changes relate to mood and vulnerability.",
+      "Momentum and LENS examine changes in reward and punishment sensitivity over time and their relationships with mood and suicidal thoughts.",
   },
   {
     id: "emotion",
@@ -18,9 +18,9 @@ export const researchThemes = [
     label: "Emotion in daily life",
     question: "How do learning and emotion shape each other?",
     description:
-      "Emotions change what we attend to, what we value, and how we act. We connect computational accounts of learning with mood, impulsivity, and experiences in everyday life.",
+      "We combine repeated learning experiments, intensive longitudinal assessment, and psychophysiology to study mood dynamics and affect-based impulsivity.",
     detail:
-      "Intensive longitudinal assessment lets us study emotions as they unfold outside the laboratory. Alongside behavioral and physiological measures, these data help us understand why strong emotions sometimes support adaptation and sometimes precede harmful decisions.",
+      "We examine how mood changes learning and valuation, how learning predicts later mood, and how emotional states influence decisions. Repeated assessments distinguish changes within a person from differences across people.",
     papers: ["cv-102", "cv-098", "cv-099"],
     projectContext:
       "Momentum studies how learning and mood shape each other. Building directly on this work, LENS will ask whether learning states precede distress and suicidal thoughts, and whether they change the emotional impact of everyday stressors.",
@@ -31,9 +31,9 @@ export const researchThemes = [
     label: "Personality & psychopathology",
     question: "Why do these processes differ across people?",
     description:
-      "We study personality and mental health as dimensions of individual differences. Our aim is to connect patterns of functioning with the neural and computational processes that help explain them.",
+      "We study transdiagnostic dimensions of personality and psychopathology, linking individual differences to neural and computational processes.",
     detail:
-      "Development is central to this work: adolescence brings changes in identity, relationships, and social roles. We investigate how these changes interact with learning and emotion to shape adaptive and maladaptive pathways, including personality pathology and suicidal behavior.",
+      "Our work examines personality pathology and suicidal behavior, as well as how identity, relationships, and social roles develop during adolescence. We use dimensional models to study variation across traditional diagnostic categories.",
     papers: ["hallquist-tackett-2026", "cv-104", "cv-094"],
     projectContext:
       "Momentum examines why learning–mood relationships differ across people. LENS will extend this question to negative affectivity and suicide-attempt history, linking enduring differences to changing vulnerability within a person.",

@@ -3,7 +3,18 @@
 The November 2026 update retains white space, Emory blue/gold, serif display type,
 and the existing static Astro foundation. It shortens the homepage introduction,
 replaces the repeated lab-description card with a real paper, and makes research
-questions navigable. The headline remains “How minds find their way.”
+questions navigable. The homepage now leads with “Learning, emotion, and mental
+health,” supported by the lab’s emphasis on individual differences and
+transdiagnostic dimensions of personality and psychopathology.
+
+## Copy style
+
+Use the supplied short bio and research statement as the source for the lab’s
+scientific description. Name the subject of each section directly: Research team,
+Selected publications, Statistical and computational methods. Avoid motivational
+slogans, generic claims about curiosity or collaboration, and repeating the same
+research summary in every section. Questions should identify a specific research
+problem. Keep publication titles, study status, and historical records accurate.
 
 ## Visitor flow
 
@@ -81,3 +92,7 @@ remained readable with JavaScript disabled.
 Browser QA found and fixed a publication reset timing bug: filtering now runs
 after the browser restores the form's default values. Verification used the built
 static site served locally; deployment was not changed.
+
+The copy revision also passed browser checks at 320 pixels, including the longer
+homepage headline and section headings. The supplied short bio is displayed in
+two paragraphs on the People page.

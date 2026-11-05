@@ -23,39 +23,22 @@ const photos = [
 
 <BaseLayout
   title="Life in the lab"
-  description="The Hallquist Lab community, its approach to research and training, and moments from the lab's history."
+  description="Hallquist Lab members, training resources, and photos from past retreats."
 >
   <PageIntro
     title="Life in the lab"
-    eyebrow="People behind the science"
-    description="Research grows through shared questions, different perspectives, and time spent learning together."
+    eyebrow="Hallquist Lab"
+    description="Lab members, training resources, and photos from past retreats."
   />
-  <section class="shell section-space prose-layout">
-    <div>
-      <p class="eyebrow">Our community</p><h2>
-        Good questions.<br />Shared discovery.
-      </h2>
-    </div><div class="prose-copy">
-      <p class="large-prose">
-        Our work brings personality science together with neuroscience and
-        quantitative methods. That breadth makes conversation, collaboration,
-        and learning from one another central to the lab.
-      </p><p>
-        Learn about our <a href={`${base}people/`}>current team</a>, explore our <a
-          href={`${base}resources/`}>training materials</a
-        >, or read about our <a href={`${base}diversity-equity/`}
-          >community values</a
-        >.
-      </p>
-    </div>
-  </section>
+  <nav class="shell section-navigation" aria-label="Lab information">
+    <a href={`${base}people/`}>Current team</a>
+    <a href={`${base}resources/`}>Training materials</a>
+    <a href={`${base}diversity-equity/`}>Community values</a>
+  </nav>
   <section class="shell section-space" aria-labelledby="lab-history">
-    <p class="eyebrow">From the lab’s history</p><h2
-      class="section-title"
-      id="lab-history"
+    <h2 class="section-title" id="lab-history">Retreats & gatherings</h2><p
+      class="section-description"
     >
-      A few moments together.
-    </h2><p class="section-description">
       Retreats and gatherings from our years at UNC–Chapel Hill.
     </p><div class="lab-photo-grid">
       {

@@ -15,16 +15,13 @@ const base = import.meta.env.BASE_URL;
 >
   <PageIntro
     title="Publications"
-    eyebrow="Our work"
-    description="Connecting personality science with the processes that shape learning, emotion, and behavior."
+    eyebrow="Articles & reviews"
+    description="Research on personality, psychopathology, learning, emotion, and decision-making."
   />
   <section class="shell section-space" aria-labelledby="spotlights">
-    <p class="eyebrow">Research spotlights</p><h2
-      class="section-title"
-      id="spotlights"
+    <h2 class="section-title" id="spotlights">Selected reviews</h2><div
+      class="publication-grid two-columns"
     >
-      Two perspectives on mental health.
-    </h2><div class="publication-grid two-columns">
       {featuredPublications.map((paper) => <PublicationCard paper={paper} />)}
     </div>
   </section>
@@ -34,9 +31,7 @@ const base = import.meta.env.BASE_URL;
   >
     <div class="section-heading compact">
       <div>
-        <p class="eyebrow">Articles & reviews</p><h2 id="all-publications">
-          Browse the work.
-        </h2>
+        <h2 id="all-publications">All publications</h2>
       </div><p>
         Publications by Michael Hallquist and collaborators, from 2007 onward. <a
           href={site.scholarUrl}

@@ -11,10 +11,11 @@ const base = import.meta.env.BASE_URL;
   <section class="hero shell">
     <div class="hero-copy">
       <p class="eyebrow">Personality · Neuroscience · Computation</p>
-      <h1>How minds<br /><em>find their way.</em></h1>
+      <h1>Learning, emotion,<br /><em>and mental health.</em></h1>
       <p class="lede">
-        We study how learning, decision-making, and emotion shape personality
-        and mental health—and why these processes differ across people.
+        We study why people differ in how they learn, make decisions, experience
+        emotions, and navigate social relationships—and how these differences
+        affect mental health.
       </p>
       <div class="button-row">
         <a class="button button-primary" href={`${base}research/`}
@@ -36,16 +37,12 @@ const base = import.meta.env.BASE_URL;
   >
     <div class="section-heading compact">
       <div>
-        <p class="eyebrow">The questions that move us</p><h2
-          id="research-heading"
-        >
-          Connecting processes<br />to people.
-        </h2>
+        <h2 id="research-heading">Explaining individual differences</h2>
       </div>
       <p>
-        We bring personality science, cognitive neuroscience, and computational
-        psychiatry together to understand variation in how people think, feel,
-        and act.
+        We integrate transdiagnostic dimensional models, cognitive neuroscience,
+        and computational psychiatry to explain personality and psychopathology
+        in terms of the neurocomputational processes that give rise to them.
       </p>
     </div>
     <div class="question-grid">
@@ -59,7 +56,7 @@ const base = import.meta.env.BASE_URL;
               <h3>{theme.question}</h3>
               <p>{theme.description}</p>
               <span class="text-link">
-                Explore this question <span aria-hidden="true">→</span>
+                Related research <span aria-hidden="true">→</span>
               </span>
             </>
           </a>
@@ -71,9 +68,7 @@ const base = import.meta.env.BASE_URL;
     <div class="shell">
       <div class="section-heading compact">
         <div>
-          <p class="eyebrow">Selected recent work</p><h2 id="work-heading">
-            Ideas in focus.
-          </h2>
+          <h2 id="work-heading">Selected publications</h2>
         </div><a class="text-link section-link" href={`${base}publications/`}
           >Browse all publications <span aria-hidden="true">→</span></a
         >
@@ -90,12 +85,12 @@ const base = import.meta.env.BASE_URL;
   <section class="shell section-space" aria-labelledby="projects-heading">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">A connected research program</p>
-        <h2 id="projects-heading">Research underway<br />& ahead.</h2>
+        <p class="eyebrow">Current & upcoming projects</p>
+        <h2 id="projects-heading">Momentum & LENS</h2>
       </div>
       <p>
-        From the interplay of learning and mood to the emergence of suicidal
-        thoughts, Momentum and LENS connect experiments with everyday life.
+        Momentum studies how learning and mood influence each other. LENS will
+        extend this work to the emergence of suicidal thoughts.
       </p>
     </div>
     <ProjectCards />
@@ -103,15 +98,12 @@ const base = import.meta.env.BASE_URL;
   <section class="community-band">
     <div class="shell community-grid">
       <div>
-        <p class="eyebrow">Hallquist Lab at Emory</p><h2>
-          A shared curiosity<br />about people.
-        </h2>
+        <h2>Research team</h2>
       </div>
       <div>
         <p>
-          Led by Michael Hallquist, our lab connects experimental research with
-          formal models and the complexity of everyday life. Collaboration and
-          quantitative training are part of how we work.
+          The lab is led by Michael Hallquist, Professor in Emory University's
+          Department of Psychology.
         </p><div class="button-row">
           <a class="button button-primary" href={`${base}people/`}
             >Meet our people</a
@@ -124,11 +116,12 @@ const base = import.meta.env.BASE_URL;
   </section>
   <section class="resource-strip shell">
     <div>
-      <p class="eyebrow">Open science & training</p><h2>
-        Methods worth sharing.
+      <p class="eyebrow">Software & training</p><h2>
+        Statistical & computational methods
       </h2><p>
-        Software, workshops, and teaching materials for modeling behavior,
-        brains, and individual differences.
+        We develop and apply latent variable and reinforcement learning models
+        for psychometric, behavioral, and neuroimaging data. Our software,
+        workshops, and course materials support this work.
       </p>
     </div><a class="text-link" href={`${base}resources/`}
       >Explore our resources <span aria-hidden="true">→</span></a
