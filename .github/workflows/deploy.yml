@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
   contents: read
   pages: write
   id-token: write
@@ -30,36 +29,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 35
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Check out deployment script
-        uses: actions/checkout@v6
-
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/github-script@v9
-        with:
-          # deploy-pages cancels after ten minutes even when Pages is still syncing.
-          # Use the same Pages API with a bounded thirty-minute wait.
-          script: |
-            const deploy = require('./scripts/deploy-pages.cjs');
-            await deploy({ github, context, core });
-
-      - name: Cancel unfinished Pages deployment
-        if: ${{ always() && steps.deployment.outputs.deployment_id != '' && steps.deployment.outcome != 'success' }}
-        uses: actions/github-script@v9
-        env:
-          PAGES_DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
-        with:
-          script: |
-            try {
-              await github.request('POST /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel', {
-                ...context.repo,
-                pages_deployment_id: process.env.PAGES_DEPLOYMENT_ID
-              });
-            } catch (error) {
-              core.warning(`Pages cancellation returned HTTP ${error.status ?? 'unknown'}.`);
-            }
+        uses: actions/deploy-pages@v5

@@ -57,3 +57,14 @@ npm run archive:prepare -- /absolute/path/to/pages.json
 ## Publishing
 
 The workflow in `.github/workflows/deploy.yml` publishes pushes to `main` using GitHub Pages. Because this is the `HallquistLab/hallquistlab.github.io` organization-site repository, the configured public URL is <https://hallquistlab.github.io/>. In repository settings, select **GitHub Actions** as the Pages source.
+
+If a separate “pages build and deployment” job tries to run Jekyll on `.astro`
+files, the Pages source is incorrectly set to deploy from a branch. Switch it to
+GitHub Actions; only the Astro workflow should publish this repository.
+
+A successful build followed by prolonged `deployment_queued` or `syncing_files`
+statuses is a Pages publishing delay. `actions/deploy-pages` cancels after ten
+minutes and clamps larger timeout inputs to that limit. Inspect the uploaded
+artifact and deployment status before changing application code or repeatedly
+retrying. On November 6, 2026, the artifact was valid and the Pages publishing
+delay cleared; live checks confirmed the current mailbox and archival 404s.
