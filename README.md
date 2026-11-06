@@ -34,6 +34,9 @@ npm run check:links
 
 ## Editing
 
+For the next round of polish and UNC content recovery, start with the
+[website handoff](docs/website-handoff.md).
+
 - Current lab identity and contact details: `src/data/site.json`
 - Current team: `src/data/people.json`
 - Research questions and related papers: `src/data/research.ts`

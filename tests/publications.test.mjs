@@ -39,7 +39,9 @@ test("CV import retains every numbered refereed article, without duplicate title
       paper.title && paper.authors && paper.venue && paper.sources.length,
     );
     assert.ok(
-      ["published", "in-press", "advance-online"].includes(paper.status),
+      ["published", "in-press", "advance-online", "preprint"].includes(
+        paper.status,
+      ),
     );
     for (const link of paper.links)
       assert.ok(
@@ -49,7 +51,7 @@ test("CV import retains every numbered refereed article, without duplicate title
 });
 
 test("spotlights use final article identifiers and distinguish advance publication", () => {
-  const selected = papers.filter((p) => p.featured);
+  const selected = papers.filter((p) => p.featured && p.status !== "preprint");
   assert.equal(selected.length, 2);
   assert.equal(
     selected.find((p) => p.id === "cv-104").doi,
@@ -66,6 +68,23 @@ test("spotlights use final article identifiers and distinguish advance publicati
     );
     assert.ok(!paper.links.some((link) => /10\.(1101|31234)/.test(link.url)));
   }
+});
+
+test("REPAIR is a searchable preprint with paired manuscript and package links", () => {
+  const paper = papers.find((p) => p.id === "vig-hallquist-2026-repair");
+  assert.equal(paper.status, "preprint");
+  assert.equal(paper.venue, "PsyArXiv");
+  assert.equal(paper.authors, "Vig, Z. A., & Hallquist, M. N.");
+  assert.ok(paper.featured && paper.summary && paper.shortTitle);
+  assert.equal(
+    paper.links.find((link) => link.label === "Preprint").url,
+    "https://osf.io/preprints/psyarxiv/gbwqd_v1",
+  );
+  assert.equal(
+    paper.links.find((link) => link.label === "R package").url,
+    "https://hallquistlab.github.io/repair/index.html",
+  );
+  assert.deepEqual(find("REPAIR measurement error", "2026"), [paper.id]);
 });
 
 test("search combines terms and year, recognizes HiTOP and accents, and resets", () => {

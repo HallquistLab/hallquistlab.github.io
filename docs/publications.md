@@ -13,7 +13,11 @@ article: **106 records**. It is a bibliography of Michael Hallquist and collabor
 not a claim that every article by every former lab member is included. The original
 lab bibliography, including additional trainee work, is preserved at
 `/archive/publications/`. Books, chapters, conference presentations, and manuscripts
-under review are not included in this article catalog.
+under review are not included by default. Selected public preprints may be added
+with `status: "preprint"` and an explicit preprint label; they are not counted as
+refereed articles. The REPAIR preprint (Vig & Hallquist, November 5, 2026) is the
+first such addition, bringing the current catalog to **107 records**. Its metadata
+was checked against the OSF API and package documentation on November 6, 2026.
 
 The attached CV is the baseline, identified by `sources: ["cv-july-2026"]` and a
 `cvNumber`. The full CV is intentionally not copied into the public repository.
@@ -56,12 +60,13 @@ in the CV is not assumed to be a journal DOI simply because an article is in pre
 3. Give each record a stable `id`. Existing `cv-XXX` IDs retain the original CV
    numbering even if a publication's year or title changes.
 4. Record the evidence in `sources`. Add `verifiedAt` only after checking the actual
-   citation. Use `published`, `in-press`, or `advance-online` accurately.
-5. Add only known links, labeled `Article`, `Open text`, `PDF`, `Code`, or `Data`.
+   citation. Use `published`, `in-press`, `advance-online`, or `preprint` accurately.
+5. Add only known links, labeled `Article`, `Open text`, `PDF`, `Code`, `Data`, `Preprint`, or `R package`.
    Put distributable local PDFs under `public/media/`; use publisher links when
    redistribution is uncertain. A record may have no access link.
 6. For a spotlight, add `shortTitle`, `summary` in our own words, and `authorLabel`.
-   Set `featured: true` for the two large Publications-page spotlights. Homepage
+   Set `featured: true` for Publications-page spotlights. An `R package` link
+   also appears alongside the manuscript link on spotlight cards. Homepage
    choices are explicit IDs in `src/pages/index.astro`. Related research papers are
    explicit IDs in `src/data/research.ts`.
 7. Run `npm test`, `npm run build`, and `npm run check:links`.

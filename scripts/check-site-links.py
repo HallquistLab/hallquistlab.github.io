@@ -27,6 +27,9 @@ class Page(HTMLParser):
 files = {('/' + str(path.relative_to(dist)).replace('index.html','')): path for path in dist.rglob('*.html')}
 pages = {url: Page(path.read_text()) for url, path in files.items()}
 core = ['/', '/research/', '/research/momentum/', '/research/lens/', '/people/', '/publications/', '/resources/', '/join/', '/contact/', '/lab/', '/archive/']
+# Separate GitHub Pages project sites share the lab hostname but are deployed
+# from their own repositories, outside this build. Keep this list explicit.
+external_project_paths = ('/repair/',)
 errors = []
 for url in core:
     if url not in pages: errors.append(f'{url}: required page is missing')
@@ -38,6 +41,7 @@ for url, page in pages.items():
         parsed = urlsplit(urljoin('https://hallquistlab.github.io' + url, link))
         if parsed.scheme not in ['http','https'] or parsed.netloc != 'hallquistlab.github.io': continue
         path = unquote(parsed.path)
+        if path.startswith(external_project_paths): continue
         target = dist / path.lstrip('/')
         if target.is_dir(): target = target / 'index.html'
         if not target.exists():

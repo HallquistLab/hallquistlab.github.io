@@ -29,7 +29,10 @@ const base = import.meta.env.BASE_URL;
         Department of Psychology <span aria-hidden="true">/</span> Emory University
       </p>
     </div>
-    <PublicationCard paper={getPublication("cv-104")} variant="feature" />
+    <PublicationCard
+      paper={getPublication("vig-hallquist-2026-repair")}
+      variant="feature"
+    />
   </section>
   <section
     class="research-overview shell section-space"
@@ -75,7 +78,7 @@ const base = import.meta.env.BASE_URL;
       </div>
       <div class="publication-grid">
         {
-          ["hallquist-tackett-2026", "cv-102", "cv-101"].map((id) => (
+          ["cv-104", "hallquist-tackett-2026", "cv-102"].map((id) => (
             <PublicationCard paper={getPublication(id)} />
           ))
         }

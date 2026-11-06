@@ -921,7 +921,10 @@ select:focus-visible {
   font-size: 13px;
   color: var(--muted);
 }
-.publication-card > .text-link {
+.publication-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
   margin-top: auto;
 }
 .publication-feature {
@@ -1483,7 +1486,7 @@ footer p {
   }
   .publication-grid .publication-title,
   .publication-grid .publication-byline,
-  .publication-grid .text-link {
+  .publication-grid .publication-actions {
     grid-column: 2;
   }
   .publication-grid.two-columns {

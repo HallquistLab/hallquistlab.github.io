@@ -1,5 +1,43 @@
 [
   {
+    "id": "vig-hallquist-2026-repair",
+    "year": 2026,
+    "authors": "Vig, Z. A., & Hallquist, M. N.",
+    "authorLabel": "Zachary A. Vig & Michael N. Hallquist",
+    "title": "REPAIR: Random-effect prediction adjustment for inference in regression",
+    "venue": "PsyArXiv",
+    "details": "",
+    "status": "preprint",
+    "links": [
+      {
+        "label": "Preprint",
+        "url": "https://osf.io/preprints/psyarxiv/gbwqd_v1"
+      },
+      {
+        "label": "R package",
+        "url": "https://hallquistlab.github.io/repair/index.html"
+      }
+    ],
+    "sources": [
+      "https://api.osf.io/v2/preprints/gbwqd_v1/",
+      "https://api.osf.io/v2/preprints/gbwqd_v1/contributors/",
+      "https://hallquistlab.github.io/repair/index.html"
+    ],
+    "verifiedAt": "2026-11-06",
+    "featured": true,
+    "shortTitle": "REPAIR: Connecting within-person processes",
+    "summary": "When stress increases, some people experience a larger rise in negative emotions than others. Do these differences in stress reactivity predict who later develops illness? REPAIR connects within-person processes to later outcomes and to one another, accounting for uncertainty in estimates from multilevel models.",
+    "keywords": [
+      "R package",
+      "multilevel models",
+      "mixed models",
+      "random effects",
+      "measurement error",
+      "two-step estimation",
+      "reliability"
+    ]
+  },
+  {
     "id": "cv-001",
     "cvNumber": 1,
     "year": 2007,
