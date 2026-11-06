@@ -18,7 +18,12 @@ export function getStaticPaths() {
     "contact",
   ]);
   return pages
-    .filter((page) => !currentPages.has(page.slug))
+    .filter(
+      (page) =>
+        !currentPages.has(page.slug) &&
+        !archivedContext.has(page.slug) &&
+        page.slug !== "diversity-equity",
+    )
     .map((page) => ({
       params: { slug: page.slug === "depend-home" ? "unc-home" : page.slug },
       props: { page },

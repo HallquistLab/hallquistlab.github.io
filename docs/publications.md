@@ -11,8 +11,9 @@ The initial catalog includes all **105 refereed articles** in _Hallquist Curricu
 Vitae Emory.docx_, revised July 8, 2026, plus the Hallquist–Tackett Annual Review
 article: **106 records**. It is a bibliography of Michael Hallquist and collaborators,
 not a claim that every article by every former lab member is included. The original
-lab bibliography, including additional trainee work, is preserved at
-`/archive/publications/`. Books, chapters, conference presentations, and manuscripts
+lab bibliography, including additional trainee work, is preserved in
+`src/data/legacy-pages.json` (the `publications` record). The UNC archive is
+retained in source and is not part of the public site. Books, chapters, conference presentations, and manuscripts
 under review are not included by default. Selected public preprints may be added
 with `status: "preprint"` and an explicit preprint label; they are not counted as
 refereed articles. The REPAIR preprint (Vig & Hallquist, November 5, 2026) is the

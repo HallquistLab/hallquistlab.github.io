@@ -24,7 +24,7 @@ problem. Keep publication titles, study status, and historical records accurate.
 - Home → selected papers → complete searchable bibliography.
 - People → training opportunities → current contact information.
 - Resources → software, workshops, and courses.
-- Life in the lab → dated historical photos and archive links.
+- Life in the lab → dated historical photos.
 
 All prominent destinations now have current-purpose pages. Recruitment copy avoids
 asserting that a position is open or reusing a historical deadline. The current
@@ -34,15 +34,15 @@ are explicitly labeled with their UNC context and dates.
 
 ## Archive boundaries
 
-All 19 migrated pages have stable `/archive/<slug>/` copies. Existing root URLs
-remain available; pages with historical logistics or content render an archive
-notice, while current People, Publications, Resources, Join, and Contact routes
-have dedicated pages. Historical forms are removed from rendered HTML and old
-FAQ buttons become native disclosures. Original source data remains unchanged.
+All 19 migrated pages, including community values, remain in
+`src/data/legacy-pages.json` and the original `archive/wp-pages.json` snapshot.
+Archive and event templates are retained in `src/archival-pages/`, outside Astro's
+public route tree. Historical root aliases and `/diversity-equity/` are excluded
+from static paths. The four software/training/media resource aliases remain public.
 
-Archive pages are marked `noindex, follow` to avoid presenting outdated logistics
-as current search results. They are omitted from the sitemap. Archives are still
-reachable through the footer and relevant current pages.
+The archive, community values, and historical events are not built, linked from
+current pages, or included in the sitemap. Restoring any page requires an explicit
+editorial review and a route change. The link checker guards these boundaries.
 
 ## Editing
 

@@ -1,6 +1,6 @@
 # Hallquist Lab website handoff
 
-November 5, 2026
+Updated November 6, 2026
 
 Your task is to polish the existing Emory site and bring forward relevant science
 and materials from the former UNC DEPENd Lab site. The main pages, searchable
@@ -8,6 +8,19 @@ publication catalog, Momentum/LENS pages, and UNC archive are implemented. Focus
 on accurate content, useful images, and readable layouts. Retain the Emory
 blue/gold palette and direct scientific copy; avoid slogans such as “Different
 perspectives. Shared questions.”
+
+## Current publication boundaries
+
+The UNC archive, historical events, and community-values page are retained for
+future editing but are not published. Templates formerly in `src/pages/archive/`
+and `src/pages/events/` now live in `src/archival-pages/`. Historical root aliases
+and `/diversity-equity/` are excluded by `src/pages/[slug].astro`. Do not restore
+these routes or links until their content has been reviewed. Read the local JSON
+snapshots to recover material; the `/archive/` URLs referenced below describe the
+former route structure and are no longer available on the current site.
+
+The current lab mailbox is `hallquistlab@gmail.com`, configured in
+`src/data/site.json`. Michael's individual faculty address remains in his profile.
 
 ## Getting started
 

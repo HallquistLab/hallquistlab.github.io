@@ -26,11 +26,26 @@ class Page(HTMLParser):
 
 files = {('/' + str(path.relative_to(dist)).replace('index.html','')): path for path in dist.rglob('*.html')}
 pages = {url: Page(path.read_text()) for url, path in files.items()}
-core = ['/', '/research/', '/research/momentum/', '/research/lens/', '/people/', '/publications/', '/resources/', '/join/', '/contact/', '/lab/', '/archive/']
+core = ['/', '/research/', '/research/momentum/', '/research/lens/', '/people/', '/publications/', '/resources/', '/join/', '/contact/', '/lab/']
 # Separate GitHub Pages project sites share the lab hostname but are deployed
 # from their own repositories, outside this build. Keep this list explicit.
 external_project_paths = ('/repair/',)
+# Archive records and community values remain in source, outside the public site.
+legacy_pages = json.loads((root / 'src/data/legacy-pages.json').read_text())
+current_routes = {'people', 'publications', 'join', 'resources', 'contact',
+                  'quantitative-methods', 'code-for-projects', 'mplusautomation', 'media-resources'}
+archival_routes = {'/archive/', '/events/'} | {
+    '/' + ('unc-home' if page['slug'] == 'depend-home' else page['slug']) + '/'
+    for page in legacy_pages if page['slug'] not in current_routes
+}
 errors = []
+for url in pages:
+    if url.startswith('/archive/') or url in archival_routes:
+        errors.append(f'{url}: archival page is exposed publicly')
+for sitemap in dist.glob('sitemap*.xml'):
+    for url in archival_routes:
+        if 'https://hallquistlab.github.io' + url in sitemap.read_text():
+            errors.append(f'{sitemap.name}: archival URL {url} is exposed in the sitemap')
 for url in core:
     if url not in pages: errors.append(f'{url}: required page is missing')
 for url, page in pages.items():
@@ -51,6 +66,9 @@ for url, page in pages.items():
 
 expected = len(json.loads((root / 'src/data/publications.json').read_text()))
 if pages['/publications/'].articles != expected: errors.append('The complete catalog is not present in server-rendered HTML')
+for url in core:
+    if 'mailto:hallquistlab@gmail.com' not in files[url].read_text():
+        errors.append(f'{url}: current lab email is missing')
 for url in ['/join/', '/contact/']:
     if 'unc.az1.qualtrics.com' in files[url].read_text(): errors.append(f'{url}: old UNC application is exposed as current')
 print(f'Checked {len(pages)} built pages; {expected} server-rendered publications.')

@@ -6,7 +6,7 @@ The Hallquist Lab website is a static Astro site that preserves the public conte
 
 The repository contains a September 17, 2026 snapshot of all 19 published WordPress pages and both historical calendar events exposed by `dependlab.unc.edu`, plus local copies of every available image, PDF, and document directly referenced by those pages. The unmodified WordPress page API response is retained in `archive/wp-pages.json`; the site renders a cleaned, local-asset version from `src/data/legacy-pages.json`.
 
-All 19 original pages are preserved under `/archive/<slug>/`. Current-purpose pages for Research, People, Publications, Resources, Join, Contact, and Life in the lab use the Emory editorial design. Historical logistics and team records are clearly labeled; old forms are not operational. Existing root URLs remain available.
+All 19 original pages are preserved in the source data. The archive and community-values page are withheld from the published site until reviewed; their templates are retained in `src/archival-pages/`. Current-purpose pages for Research, People, Publications, Resources, Join, Contact, and Life in the lab use the Emory editorial design. Historical logistics and team records are clearly labeled; old forms are not operational. Historical root aliases are also withheld; the software and training resource aliases remain available.
 
 The publication catalog contains all 105 refereed articles from the July 2026 CV plus the Hallquist–Tackett Annual Review article. Recent metadata has been reconciled against publisher/PubMed records; the catalog is curated rather than a live Google Scholar feed. See [publication maintenance](docs/publications.md) and the [design notes](docs/editorial-design.md).
 
